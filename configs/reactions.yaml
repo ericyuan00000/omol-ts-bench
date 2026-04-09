@@ -1,0 +1,59 @@
+# OMol TS Benchmark - Reaction Registry
+#
+# Each reaction is tagged with a tier:
+#   - smoke:    ~10-20 reactions for quick validation / CI
+#   - standard: ~100-200 reactions for meaningful benchmarking
+#   - full:     All ~1000 reactions (HPC recommended)
+#
+# Reaction IDs correspond to XYZ filenames in data/xyz/{reactants,products}/
+#
+# Metadata fields are optional and used for analysis/filtering:
+#   - metal:       Central metal element
+#   - bond_type:   Type of bond being formed/broken (e.g., C-H, C-C, M-L)
+#   - spin:        Spin multiplicity
+#   - n_atoms:     Number of atoms
+#   - source:      Original dataset source identifier
+#   - difficulty:   Expected difficulty (easy, medium, hard)
+#                  Based on known convergence behavior.
+
+reactions:
+  # === SMOKE TIER ===
+  # Minimal set covering key reaction types for quick validation.
+  # Run time: ~minutes on a single GPU with UMA.
+
+  # - id: rxn_0001
+  #   tier: smoke
+  #   metal: Fe
+  #   bond_type: C-H
+  #   spin: 1
+  #   n_atoms: 25
+  #   difficulty: easy
+  #   notes: "C-H activation by iron complex"
+
+  # - id: rxn_0042
+  #   tier: smoke
+  #   metal: Pd
+  #   bond_type: C-C
+  #   spin: 1
+  #   n_atoms: 38
+  #   difficulty: medium
+  #   notes: "Pd-catalyzed cross-coupling"
+
+  # === STANDARD TIER ===
+  # Statistically meaningful subset with diverse chemistry.
+  # Run time: ~hours on a single GPU, ~minutes on a cluster.
+
+  # - id: rxn_0100
+  #   tier: standard
+  #   metal: Rh
+  #   bond_type: C-H
+  #   spin: 1
+  #   n_atoms: 42
+
+  # === FULL TIER ===
+  # All reactions. Default tier if not specified.
+  # Run time: ~days on a single GPU, ~hours on a cluster.
+
+  # Reactions without explicit tier assignment default to "full".
+  # Add your reaction entries below:
+  []

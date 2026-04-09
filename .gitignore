@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Results and temp files
+results/
+*.json
+!configs/*.yaml
+
+# Data (large XYZ files tracked separately or via git-lfs)
+data/xyz/reactants/*.xyz
+data/xyz/products/*.xyz
+data/references/
+
+# OS
+.DS_Store
+Thumbs.db

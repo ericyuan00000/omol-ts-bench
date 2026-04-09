@@ -1,0 +1,26 @@
+# Default configuration for OMol TS Benchmark pipeline
+#
+# Override these values by passing --config path/to/config.yaml to the CLI,
+# or by providing kwargs directly in the Python API.
+
+neb:
+  n_images: 10
+  fmax: 0.05
+  max_steps: 500
+  climb: true
+  method: "aseneb"
+  interpolation: "idpp"
+  optimizer: "BFGS"
+
+sella:
+  fmax: 0.02
+  max_steps: 500
+  order: 1
+  delta: 0.01
+  gamma: 0.4
+
+irc:
+  step_size: 0.1
+  max_steps: 200
+  fmax: 0.05
+  direction: "both"
