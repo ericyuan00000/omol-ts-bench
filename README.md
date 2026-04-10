@@ -6,18 +6,14 @@ Benchmark suite for transition state (TS) optimization on organometallic reactio
 
 ```
 Reactant + Product
-       │
-       ▼
- NEB or GSM          ← double-ended TS search (guess)
-       │
-       ▼
-  Sella TS opt       ← saddle-point refinement (order-1)
-       │
-       ▼
-  Sella IRC          ← intrinsic reaction coordinate (both directions)
-       │
-       ▼
- OpenBabel validate  ← check IRC endpoints match reactant/product connectivity
+  ▼
+NEB or GSM          ← double-ended TS search (guess)
+  ▼
+Sella TS opt        ← saddle-point refinement (order-1)
+  ▼
+Sella IRC           ← intrinsic reaction coordinate (both directions)
+  ▼
+OpenBabel validate  ← check IRC endpoints match reactant/product connectivity
 ```
 
 Each stage produces a typed result dataclass (`NEBResult`, `SellaResult`, `IRCResult`, `ValidationResult`). The full pipeline result is a `PipelineResult`.
