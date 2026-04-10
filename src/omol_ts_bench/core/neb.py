@@ -73,6 +73,8 @@ def run_neb(
     NEBResult
         Result dataclass containing TS guess and energetics.
     """
+    import copy
+
     import ase.optimize
     import numpy as np
     from ase.mep import NEB
@@ -86,13 +88,11 @@ def run_neb(
         images.append(reactant.copy())
     images.append(product.copy())
 
-    # Attach calculators to intermediate images
-    for image in images[1:-1]:
-        image.calc = calc
-
-    # Also need calculators on endpoints for energy evaluation
-    images[0].calc = calc
-    images[-1].calc = calc
+    # Each image needs its own calculator instance (ASE requirement).
+    # deepcopy preserves lightweight calcs (LJ, EMT) and works for
+    # FAIRChemCalculator because it shallow-copies the shared model weights.
+    for image in images:
+        image.calc = copy.deepcopy(calc)
 
     # Set up NEB
     neb = NEB(images, climb=climb, method=method)

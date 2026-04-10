@@ -10,10 +10,10 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-from omol_ts_bench.core.irc import IRCResult
-from omol_ts_bench.core.neb import NEBResult
-from omol_ts_bench.core.sella import SellaResult
-from omol_ts_bench.core.validate import ValidationResult
+from omol_ts_bench.core.irc import IRCResult, run_irc
+from omol_ts_bench.core.neb import NEBResult, run_neb
+from omol_ts_bench.core.sella import SellaResult, run_sella
+from omol_ts_bench.core.validate import ValidationResult, validate_irc_endpoints
 
 if TYPE_CHECKING:
     from ase import Atoms
@@ -75,11 +75,6 @@ def run_pipeline(
     PipelineResult
         Complete results from all pipeline stages.
     """
-    from omol_ts_bench.core.irc import run_irc
-    from omol_ts_bench.core.neb import run_neb
-    from omol_ts_bench.core.sella import run_sella
-    from omol_ts_bench.core.validate import validate_irc_endpoints
-
     neb_kwargs = neb_kwargs or {}
     sella_kwargs = sella_kwargs or {}
     irc_kwargs = irc_kwargs or {}
